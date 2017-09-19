@@ -1,0 +1,31 @@
+
+   blog-generator
+   - template
+		- blog template
+		- post template
+   - css and template file
+   
+   directories needed
+    - generator
+	- src <- blog posts 
+	- dist <- generated blog
+   
+   create a post (generate a markdown file)
+	- blog-generator -n newpost
+      - create a file with name newpost somewhere, first row is date when created (and time)
+	    - store files flat for now (or in folder by year and month) like:
+			- 2016
+				- August
+					- NewPost.md
+					- Posted.md
+			- 2017
+				- September
+					- First.md
+					- Second.md
+		
+	  - only need headline, date and text for starters (date is set automatically)
+	  
+	generate output
+	- blog-generator -g
+	  - read all posts and generate blog html
+	  - menu needs to include all posts 
