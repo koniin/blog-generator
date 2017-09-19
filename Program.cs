@@ -12,16 +12,14 @@ namespace blog_generator {
 				string postName = string.Empty;
 				for(int i = 1; i < args.Length; i++) {
 					if(i != 1)
-						postName += "_";
+						postName += " ";
 					postName += args[i];
 				}
 				BlogPostCreator blogPostCreator = new BlogPostCreator();
 				blogPostCreator.Create(postName);
 			} else if(args[0] == "-g") {
-				Console.WriteLine("Read /template/template.html");
-				Console.WriteLine("Read Markdown");
-				Console.WriteLine("Generate html into template");
-				Console.WriteLine("Create output in /html");
+				BlogHtmlGenerator blogHtmlGenerator = new BlogHtmlGenerator();
+				blogHtmlGenerator.Generate();
 			}
         }
 		
