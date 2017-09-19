@@ -9,6 +9,6 @@
 	- generate next link -> goes to posts/2.html
 	- generate prev links for posts/2..N.html pages
 	- generate a tree structure of links to show on pages with links to posts
-	  
-	  - generate separate posts as html files - so they can be linked directly
 	  - put on top of posts for testing
+	  - generate separate posts as html files - so they can be linked directly
+	    - put in folders like 2017\09\postname.html
