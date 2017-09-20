@@ -1,7 +1,11 @@
-
-  * Generation
-	- Generate links to individual posts
-		- post headline
+	Generate 
+		- Recent posts html
+		- Archive something
+			- Tree
+			- Archive by month
+			- Achive page
+		- About page template?
+		- Recent posts list?
 
 	ON HOLD:
 	- generate a tree structure of links to show on pages with links to posts
