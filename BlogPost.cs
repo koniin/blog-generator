@@ -9,7 +9,7 @@ namespace blog_generator {
         public string Title { 
             get {
                 var fileName = Path.GetFileNameWithoutExtension(FileName);
-                fileName = fileName.Remove(fileName.LastIndexOf("-"));
+                fileName = fileName.Remove(fileName.LastIndexOf("_"));
                 return fileName.Replace("-", " ");
             }
         }

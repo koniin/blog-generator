@@ -6,7 +6,7 @@ namespace blog_generator {
             return $"/pages/{page}.html";
         }
 
-        public string GetPostFileUrl(BlogPost post) {
+        public string GetPostUrl(BlogPost post) {
             return $"/{post.Year}/{post.Month}/{Path.GetFileNameWithoutExtension(post.FileName)}.html";
         }
     }

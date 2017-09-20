@@ -2,12 +2,6 @@ using System;
 
 namespace blog_generator {
     public class HtmlGenerator {
-        enum PageType {
-            Index,
-            PagingPage,
-            Post
-        }
-
         private readonly UrlGenerator _urlGenerator;
         public HtmlGenerator() {
             _urlGenerator = new UrlGenerator();
@@ -45,7 +39,14 @@ namespace blog_generator {
         }
 
         private string GenerateRecentPosts(Blog blog, string fromTemplate) {
-            return fromTemplate.Replace("{{recent_posts}}", string.Empty);
+            var recentPosts = blog.GetRecentPosts();
+            var posts = "<ul id=\"recent-posts\">";
+            foreach(BlogPost post in recentPosts) {
+                var link = $"<a href='{_urlGenerator.GetPostUrl(post)}'>{post.Title}</a>";
+                posts += $"<li>{link}</li>";
+            }
+            posts += "</ul>";
+            return fromTemplate.Replace("{{recent_posts}}", posts);
         }
 
         private string SetTitle(string template, string title) {
@@ -65,7 +66,7 @@ namespace blog_generator {
 
         private string GeneratePostHtml(BlogPost post) {
             var postHtml = post.MarkDown;
-            postHtml = postHtml.Replace("{{post_url}}", _urlGenerator.GetPostFileUrl(post));
+            postHtml = postHtml.Replace("{{post_url}}", _urlGenerator.GetPostUrl(post));
             postHtml = CommonMark.CommonMarkConverter.Convert(postHtml);
             return postHtml;
         }
