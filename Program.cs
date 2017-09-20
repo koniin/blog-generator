@@ -8,7 +8,7 @@ namespace blog_generator {
 				return;
 			}
 			
-			if(args[0] == "-n") {
+			if(args[0] == "-p") {
 				string postName = string.Empty;
 				for(int i = 1; i < args.Length; i++) {
 					if(i != 1)

@@ -1,10 +1,6 @@
 
-  * Settings file (generate from "blog-generator -b namn"
-	- blog name as Title in page
-	- max number of posts to show on first page
   * Generation
-	- DATA Structures MAN!
-	- generate index with max number of posts (read from settings file)
+	- generate index with max number of posts - default and overwriteable when generating
 	- generate next pages in posts/2..N.html
 	- generate next link -> goes to posts/2.html
 	- generate prev links for posts/2..N.html pages
