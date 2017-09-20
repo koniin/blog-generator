@@ -8,7 +8,9 @@ namespace blog_generator {
 				return;
 			}
 			
-			if(args[0] == "-p") {
+			if(args[0] == "-h") {
+				PrintHelp();
+			} else if(args[0] == "-p") {
 				string postName = string.Empty;
 				for(int i = 1; i < args.Length; i++) {
 					if(i != 1)
@@ -16,7 +18,11 @@ namespace blog_generator {
 					postName += args[i];
 				}
 				BlogPostCreator blogPostCreator = new BlogPostCreator();
-				blogPostCreator.Create(postName);
+				try {
+					blogPostCreator.Create(postName);
+				} catch(Exception e) {
+					PrintError(e);
+				}
 			} else if(args[0] == "-g") {
 				BlogGenerator blogGenerator = new BlogGenerator(new Settings {
 					PostsPerPage = 2,
@@ -24,7 +30,11 @@ namespace blog_generator {
 					TemplateFolder = "template",
 					RecentPostCount = 4
 				});
-				blogGenerator.Generate();
+				try {
+					blogGenerator.Generate();
+				} catch(Exception e) {
+					PrintError(e);
+				}
 			}
         }
 		
@@ -33,6 +43,14 @@ namespace blog_generator {
 			Console.WriteLine("-p [POSTNAME]         - Create a new post with POSTNAME as name");
 			Console.WriteLine("-g                    - Generate output");
 			Console.WriteLine("\n");
+		}
+
+		private static void PrintError(Exception e) {
+			Console.ForegroundColor = ConsoleColor.DarkRed;
+			Console.WriteLine(e.Message);
+#if DEBUG			
+			Console.WriteLine(e.StackTrace);
+#endif
 		}
     }
 }
