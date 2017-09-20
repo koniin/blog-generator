@@ -1,9 +1,9 @@
 
   * Generation
-	- generate index with max number of posts - default and overwriteable when generating
-	- generate next pages in posts/2..N.html
-	- generate next link -> goes to posts/2.html
-	- generate prev links for posts/2..N.html pages
+	- Generate links to individual posts
+		- post headline
+
+	ON HOLD:
 	- generate a tree structure of links to show on pages with links to posts
 	  - put on top of posts for testing
 	  - generate separate posts as html files - so they can be linked directly

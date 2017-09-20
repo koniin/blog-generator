@@ -79,6 +79,7 @@ namespace blog_generator {
                     foreach(var post in posts) {
                         var blogPost = b.AddPost(y.Name, m.Name, post);
                         var postText = File.ReadAllText(blogPost.FileName);
+                        postText = postText.Replace("{{post_url}}", GetPostFileUrl(blogPost));
                         blogPost.SetHtml(CommonMark.CommonMarkConverter.Convert(postText));
                     }
                 }
@@ -100,7 +101,9 @@ namespace blog_generator {
         private string GeneratePostsHtml(Blog blog, string template, int page) {
             var posts = "<ul id=\"posts\">";
             foreach(BlogPost post in blog.GetPostsForPage(page)) {
-                posts += $"<li>{post.Html}</li>";
+                var postHtml = post.Html;
+                postHtml = postHtml.Replace("{{postUrl}}", GetPostFileUrl(post));
+                posts += $"<li>{postHtml}</li>";
             }
             posts += "</ul>";
             var result = template.Replace("{{posts}}", posts);
@@ -143,6 +146,12 @@ namespace blog_generator {
         private string GetPageFilePath(int page) {
             string pagePath = Path.Combine("html", "pages");
             return Path.Combine(pagePath, $"{page}.html");
+        }
+
+        private string GetPostFileUrl(BlogPost post) {
+            var postFilePath = GetPostFilePath(post);
+            postFilePath = postFilePath.Remove(0, 4);
+            return postFilePath.Replace("\\", "/");
         }
 
         private string GetPostFilePath(BlogPost post) {

@@ -1,5 +1,5 @@
 {{date}}
 
-**{{topic}}**
+## [{{topic}}]({{post_url}})
 
 {{text}}
