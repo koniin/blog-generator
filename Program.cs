@@ -24,21 +24,18 @@ namespace blog_generator {
 					PrintError(e);
 				}
 			} else if(args[0] == "-g") {
-				BlogGenerator blogGenerator = new BlogGenerator(new Settings {
-					PostsPerPage = 2,
-					OutPutFolder = "html",
-					TemplateFolder = "template",
-					RecentPostCount = 4
-				});
+				var settings = Settings.LoadOrDefault();
+				BlogGenerator blogGenerator = new BlogGenerator(settings);
 				try {
 					blogGenerator.Generate();
+					blogGenerator.CopyDirectories();
 				} catch(Exception e) {
 					PrintError(e);
 				}
 			}
         }
-		
-		private static void PrintHelp() {
+
+        private static void PrintHelp() {
 			Console.WriteLine("Usage:");
 			Console.WriteLine("-p [POSTNAME]         - Create a new post with POSTNAME as name");
 			Console.WriteLine("-g                    - Generate output");

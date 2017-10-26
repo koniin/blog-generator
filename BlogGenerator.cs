@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 namespace blog_generator {
@@ -30,6 +31,18 @@ namespace blog_generator {
             GenerateIndex(blog, template);
             GeneratePosts(blog, template);
             GeneratePages(blog, template);
+        }
+
+        internal void CopyDirectories() {
+            if(string.IsNullOrWhiteSpace(_settings.CopyDirectories))
+                return;
+
+            var directories = _settings.CopyDirectories.Split(',');
+            foreach(var directory in directories) {
+                var sourceDir = Path.Combine(_settings.TemplateFolder, directory);
+                var outDir = Path.Combine(_settings.OutPutFolder, directory);
+                IOExtensions.CopyDirectory(sourceDir, outDir, true);
+            }
         }
 
         private void GenerateIndex(Blog blog, string template) {

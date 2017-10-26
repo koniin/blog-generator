@@ -4,4 +4,3 @@
 			- Archive by month
 			- Achive page
 		- About page template?
-		- resources (images/js/css) -> copy to output dir
