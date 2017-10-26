@@ -1,11 +1,207 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>{{titleprefix}}Blog Title</title>
-    </head>
-    <body>
-        {{tree}}
-        {{posts}}
-        {{paging}}
-        {{recent_posts}}
-    </body>
+<head>
+    <title>{{titleprefix}}Blog Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+</head>
+<body>
+	<style type="text/css"> 
+	body {
+		font-family: Helvetica,Tahoma,sans-serif;
+		font-size: .9375em;
+		line-height: 1.65em;
+		background: #f1ebe1;
+		color: #222;
+	}
+	
+	html, body, div, span, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: 0;
+		font-size: 100%;
+		vertical-align: baseline;
+	}
+	
+	*, *:before, *:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	a {
+		text-decoration: none;
+		color: #c73c3c;
+	}
+	
+	.top-navigation {
+		padding-top: 30px;
+	}
+	
+	header {
+	    display: block;
+	}
+	
+	.container {
+		margin: auto;
+		max-width: 1024px;
+		padding: 0 20px;
+	}
+	
+	.navbar.navbar-left {
+		float: left;
+	}
+
+	.navbar.navbar-right {
+		float: right;
+	}
+	
+	.navbar {
+		font-size: 105%;
+		margin-bottom: 1.65em;
+	}
+	
+	.logo, .top-nav a.logo {
+		font-family: sans-serif;
+		font-weight: 700;
+		font-size: 27px;
+		color: #000;
+		letter-spacing: -2px;
+	}
+	
+	ul li, ol li {
+		text-align: left;
+		list-style: none;
+		margin: 0;
+	}
+	
+	.navbar li {
+		float: left;
+		margin-right: 1.65em;
+	}
+	
+	.navbar ul:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	.navbar.navbar-right li {
+		margin-right: 0;
+		margin-left: 1.65em;
+	}
+	
+	.top-nav .item-nav li a {
+		font-family: Lato,sans-serif;
+		font-size: 15px;
+		font-weight: 500;
+		color: #c73c3c;
+	}
+	
+	.navbar:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	.group:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	
+	.banner {
+		width: 100%;
+		height: 272px;
+		padding-top: 117px;
+		background: url(img/banner.png) center top #F7F7F7;
+	}
+	
+	.content {
+		padding: 45px 35px;
+	}
+	
+	.post h2 a {
+		color: #000;
+		font-family: sans-serif;
+		font-size: 22px;
+		font-weight: 400;
+		position: relative;
+	}
+	
+	.post p {
+		color: #535353;
+		font-family: sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+	}
+	
+	.post {
+		margin-bottom: 80px;
+	}
+	
+	footer {
+		clear: both;
+	}
+	
+	.footer-text {
+		padding-top: 40px;
+		margin: 0px auto;
+		width: 300px;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	</style>
+
+	<!-- Navigation -->
+	<div class="top-navigation">
+		<div class="container">
+			<header class="group top-nav">
+				<nav class="navbar navbar-left" >
+					<a class="logo" href="index.html">Name</a>
+				</nav>
+			    <nav id="navbar-1" class="navbar item-nav navbar-right">
+				    <ul>
+				        <li class="active"><a href="index.html">Home</a></li>
+				        <li><a href="#">About</a></li>
+				        <li><a href="#">Archive</a></li>
+				        <li><a href="#">Contact</a></li>
+				    </ul>
+				</nav>
+			</header>
+		</div>
+	</div>
+
+	<div class="banner">
+	</div>
+	
+	<!-- Content -->
+	<div class="content">
+		<div class="container">
+			<div style="float:left;">
+				{{posts}}
+				<div class="paging">
+					{{paging}}
+				</div>
+			</div>
+			<div style="float:right;">
+				{{recent_posts}}
+				{{tree}}
+			</div>
+		</div>	
+	</div>
+
+	<footer>
+		<div class="container">
+			<p class="footer-text">
+	    		footer text
+	    	</p>
+		</div>
+	</footer>
+</body>
 </html>

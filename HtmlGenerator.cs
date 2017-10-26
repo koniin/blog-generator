@@ -54,12 +54,12 @@ namespace blog_generator {
         }
 
         private string GeneratePostHtmlList(Blog blog, string template, int page) {
-            var posts = "<ul id=\"posts\">";
+            var posts = "<div id=\"posts\">";
             foreach(BlogPost post in blog.GetPostsForPage(page)) {
                 var postHtml = GeneratePostHtml(post);
-                posts += $"<li>{postHtml}</li>";
+                posts += $"<div class=\"post\">{postHtml}</div>";
             }
-            posts += "</ul>";
+            posts += "</div>";
             var result = template.Replace("{{posts}}", posts);
             return result;
         }
